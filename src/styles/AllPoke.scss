@@ -1,21 +1,25 @@
 .main-allPoke {
 	padding: 1.5rem;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	background-image: url("../img/1920x1080.png");
 	background-position: center;
 	background-size: cover;
-	overflow: hidden;
+	// background-repeat: repeat;
+	// overflow: hidden;
+	position: absolute;
 }
 .pokeBarLoad {
 	display: flex;
 	justify-content: center;
 	width: 1200px;
 	height: 432px;
-	margin-left: 10rem;
-	margin-top: 3rem;
-	margin-bottom: 3rem;
-	padding-top: 13rem;
+	// margin-left: 10rem;
+	// margin-top: 3rem;
+	// margin-bottom: 3rem;
+	padding: 3rem;
+	padding-left: 20rem;
+	padding-top: 10rem;
 }
 .actualPokeList {
 	// background-color: blue;
@@ -26,10 +30,11 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: 1200px;
-	margin-left: 10rem;
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+	padding: 3rem;
+	// width: 1200px;
+	// margin-left: 10rem;
+	// margin-top: 3rem;
+	// margin-bottom: 3rem;
 }
 
 .PokeList {
@@ -83,8 +88,9 @@
 
 .pokePaginate {
 	display: flex;
-	padding-left: 15rem;
-	padding-top: 1rem;
+	justify-content: center;
+	// padding-left: 15rem;
+	// padding-top: 1rem;
 
 	//blur
 	.paginationBttns {
