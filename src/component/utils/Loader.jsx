@@ -46,7 +46,7 @@ const Loader = () => {
 			{
 				ease: "power3.out",
 				duration: 2.8,
-				delay: 1.5,
+				delay: 1,
 
 				opacity: 1,
 			},
@@ -59,8 +59,10 @@ const Loader = () => {
 	}, 5000);
 
 	return (
-		<div className="mainLoader">
-			<p>{pokeArr[index % pokeArr.length]}</p>
+		<div className="noback">
+			<div className="mainLoader">
+				<p>{pokeArr[index % pokeArr.length]}</p>
+			</div>
 		</div>
 	);
 };
