@@ -13,72 +13,90 @@ const PokeDetails = () => {
 
 	const [isLoad, setIsLoad] = useState(true);
 
-	const [baseHappy, setBaseHappy] = useState("");
-	const [capture, setCapture] = useState("");
-	const [growth, setGrowth] = useState("");
-	const [genus, setGenus] = useState("");
-	const [id1, setId1] = useState("");
-	const [name1, setName1] = useState("");
-	const [id2, setId2] = useState("");
-	const [name2, setName2] = useState("");
-	const [id3, setId3] = useState("");
-	const [name3, setName3] = useState("");
-	const [pokeColor, setPokeColor] = useState("");
+	const [pokeSpec, setPokeSpec] = useState({
+		happy: "",
+		capture: "",
+		growth: "",
+		genus: "",
+		pokeColor: "",
+	});
+	const [pokeAPI, setPokeAPI] = useState({
+		exp: "",
+		name: "",
+		hp: "",
+		atk: "",
+		def: "",
+		satk: "",
+		sdef: "",
+		speed: "",
+		weight: "",
+		type: "",
+		height: "",
+		img: "",
+	});
 
-	const [exp, setExp] = useState("");
-	const [name, setName] = useState("");
-	const [hp, setHp] = useState("");
-	const [atk, setAtk] = useState("");
-	const [def, setDef] = useState("");
-	const [Satk, setSatk] = useState("");
-	const [Sdef, setSdef] = useState("");
-	const [speed, setSpeed] = useState("");
-	const [weight, setWeight] = useState("");
-	const [img, setImg] = useState("");
-	const [type, setType] = useState("");
-	const [height, setHeight] = useState("");
+	const [poke1, setPoke1] = useState({
+		id1: "",
+		name1: "",
+	});
+	const [poke2, setPoke2] = useState({
+		id2: "",
+		name2: "",
+	});
+	const [poke3, setPoke3] = useState({
+		id3: "",
+		name3: "",
+	});
 
 	axios
 		.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
 		.then((response) => {
-			setBaseHappy(response.data.base_happiness);
-			setCapture(response.data.capture_rate);
-			setGrowth(response.data.growth_rate.name);
-			setGenus(response.data.genera[7].genus);
-			setPokeColor(response.data.color.name);
+			setPokeSpec({
+				happy: response.data.base_happiness,
+				capture: response.data.capture_rate,
+				growth: response.data.growth_rate.name,
+				genus: response.data.genera[7].genus,
+				pokeColor: response.data.color.name,
+			});
+
 			axios.get(response.data.evolution_chain.url).then((resp) => {
 				axios.get(resp.data.chain.species.url).then((r1) => {
-					setId1(r1.data.id);
-					setName1(r1.data.name);
+					setPoke1({
+						id1: r1.data.id,
+						name1: r1.data.name,
+					});
 				});
 				axios.get(resp.data.chain.evolves_to[0].species.url).then((r2) => {
-					setId2(r2.data.id);
-					setName2(r2.data.name);
+					setPoke2({
+						id2: r2.data.id,
+						name2: r2.data.name,
+					});
 				});
 				axios
 					.get(resp.data.chain.evolves_to[0].evolves_to[0].species.url)
 					.then((r3) => {
-						setId3(r3.data.id);
-						setName3(r3.data.name);
+						setPoke3({
+							id3: r3.data.id,
+							name3: r3.data.name,
+						});
 					});
 			});
 		});
 	axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => {
-		setExp(res.data.base_experience);
-		setName(res.data.name);
-		setHp(res.data.stats[0].base_stat);
-		setAtk(res.data.stats[1].base_stat);
-		setDef(res.data.stats[2].base_stat);
-		setSatk(res.data.stats[3].base_stat);
-		setSdef(res.data.stats[4].base_stat);
-		setSpeed(res.data.stats[5].base_stat);
-		setWeight(res.data.weight);
-		setImg(
-			`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-		);
-		setType(res.data.types[0].type.name);
-		setHeight(res.data.height);
-		// setImg(res.data.sprites.other.official-artwork.front_default);
+		setPokeAPI({
+			exp: res.data.base_experience,
+			name: res.data.name,
+			hp: res.data.stats[0].base_stat,
+			atk: res.data.stats[1].base_stat,
+			def: res.data.stats[2].base_stat,
+			satk: res.data.stats[3].base_stat,
+			sdef: res.data.stats[4].base_stat,
+			speed: res.data.stats[5].base_stat,
+			weight: res.data.weight,
+			height: res.data.height,
+			type: res.data.types[0].type.name,
+			img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+		});
 	});
 	VanillaTilt.init(document.querySelector(".pokeNamedet"), {
 		max: 25,
@@ -103,13 +121,17 @@ const PokeDetails = () => {
 						</div>
 
 						<img
-							src={img}
+							src={pokeAPI.img}
 							alt="image"
-							style={{ background: `linear-gradient(${pokeColor}, white)` }}
+							style={{
+								background: `linear-gradient(${pokeSpec.pokeColor}, white)`,
+							}}
 							className="pokeDetailImg"
 						/>
 						<div className="pokeNamedet">
-							<div style={{ color: `${pokeColor}` }}>{name}</div>
+							<div style={{ color: `${pokeSpec.pokeColor}` }}>
+								{pokeAPI.name}
+							</div>
 						</div>
 					</div>
 					<div className="rightDetail">
@@ -118,20 +140,20 @@ const PokeDetails = () => {
 								<p>Stats:-</p>
 							</div>
 							<div className="statDetail">
-								<p>Genus: {genus}</p>
-								<p>Type: {type}</p>
-								<p>Base Exp: {exp}</p>
-								<p>Base Happiness: {baseHappy}</p>
-								<p>Catch Rate: {capture}</p>
-								<p>Growth Rate: {growth}</p>
-								<p>HP: {hp}</p>
-								<p>Atk: {atk}</p>
-								<p>Def: {def}</p>
-								<p>Special Atk: {Satk}</p>
-								<p>Special Def: {Sdef}</p>
-								<p>Speed: {speed}</p>
-								<p>Weight: {weight / 10}kg</p>
-								<p>Height: {height / 10}m</p>
+								<p>Genus: {pokeSpec.genus}</p>
+								<p>Type: {pokeAPI.type}</p>
+								<p>Base Exp: {pokeAPI.exp}</p>
+								<p>Base Happiness: {pokeSpec.happy}</p>
+								<p>Catch Rate: {pokeSpec.capture}</p>
+								<p>Growth Rate: {pokeSpec.growth}</p>
+								<p>HP: {pokeAPI.hp}</p>
+								<p>Atk: {pokeAPI.atk}</p>
+								<p>Def: {pokeAPI.def}</p>
+								<p>Special Atk: {pokeAPI.satk}</p>
+								<p>Special Def: {pokeAPI.sdef}</p>
+								<p>Speed: {pokeAPI.speed}</p>
+								<p>Weight: {pokeAPI.weight / 10}kg</p>
+								<p>Height: {pokeAPI.height / 10}m</p>
 							</div>
 						</div>
 						<div className="PokeDetailsEvol">
@@ -139,39 +161,39 @@ const PokeDetails = () => {
 								<p>Evolution:-</p>
 							</div>
 
-							{name3 ? (
+							{poke3.name3 ? (
 								<div className="evolStat">
-									{name2 && name3 ? (
+									{poke2.name2 && poke3.name3 ? (
 										<div className="evolSub">
 											<div className="pokeEvol">
-												<p>{name1}</p>
+												<p>{poke1.name1}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id1}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke1.id1}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id1}`);
+														navigate(`/poke/${poke1.id1}`);
 														setIsLoad(true);
 													}}
 												/>
 											</div>
 											<div className="pokeEvol">
-												<p>{name2}</p>
+												<p>{poke2.name2}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id2}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke2.id2}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id2}`);
+														navigate(`/poke/${poke2.id2}`);
 														setIsLoad(true);
 													}}
 												/>
 											</div>
 											<div className="pokeEvol">
-												<p>{name3}</p>
+												<p>{poke3.name3}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id3}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke3.id3}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id3}`);
+														navigate(`/poke/${poke3.id3}`);
 														setIsLoad(true);
 													}}
 												/>
@@ -181,26 +203,26 @@ const PokeDetails = () => {
 								</div>
 							) : (
 								<div className="evolStat">
-									{name1 && name2 ? (
+									{poke1.name1 && poke2.name2 ? (
 										<div className="evolSub">
 											<div className="pokeEvol">
-												<p>{name1}</p>
+												<p>{poke1.name1}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id1}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke1.id1}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id1}`);
+														navigate(`/poke/${poke1.id1}`);
 														setIsLoad(true);
 													}}
 												/>
 											</div>
 											<div className="pokeEvol">
-												<p>{name2}</p>
+												<p>{poke2.name2}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id2}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke2.id2}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id2}`);
+														navigate(`/poke/${poke2.id2}`);
 														setIsLoad(true);
 													}}
 												/>
@@ -209,12 +231,12 @@ const PokeDetails = () => {
 									) : (
 										<div className="evolSub">
 											<div className="pokeEvol">
-												<p>{name1}</p>
+												<p>{poke1.name1}</p>
 												<img
-													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id1}.png`}
+													src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke1.id1}.png`}
 													alt="evo img"
 													onClick={() => {
-														navigate(`/poke/${id1}`);
+														navigate(`/poke/${poke1.id1}`);
 														setIsLoad(true);
 													}}
 												/>
