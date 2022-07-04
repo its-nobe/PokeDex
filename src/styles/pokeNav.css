@@ -1,0 +1,7 @@
+.pokeNav input:checked ~ .subPokeNav {
+	width: 350px;
+}
+
+.pokeNav input:checked ~ img {
+	transform: rotate(360deg);
+}

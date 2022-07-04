@@ -1,0 +1,146 @@
+.main-allPoke {
+	padding: 1.5rem;
+	height: 100vh;
+	width: 100%;
+	background-image: url("../img/118Z_2012.w017.n001.334B.p15.334.jpg");
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+}
+.pokeBarLoad {
+	display: flex;
+	justify-content: center;
+	width: 1200px;
+	height: 432px;
+	margin-left: 10rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding-top: 13rem;
+}
+.actualPokeList {
+	// background-color: blue;
+	// display: grid;
+	// grid-template-columns: 25% 25% 25%;
+	// padding: 0.5rem;
+	// margin-top: 2.5rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 1200px;
+	margin-left: 10rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.PokeList {
+	margin: 0.5rem;
+	// margin-top: 5rem;
+	// border: 1px solid black;
+	border-radius: 16px;
+	transition: 1s ease-in-out;
+	// overflow: hidden;
+	position: relative;
+	padding-left: 3rem;
+	display: grid;
+	grid-template-columns: 91% 9%;
+	width: 350px;
+	height: 200px;
+	z-index: 0;
+	//glassmorphism
+	color: #fff;
+	// border: 1px solid rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(5px);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+	div {
+		img {
+			transition: transform 0.5s ease-in-out;
+			width: 100px;
+			height: 100px;
+		}
+		img:hover {
+			transform: scale(1.5);
+			cursor: crosshair;
+		}
+	}
+	.iImage {
+		width: 20px;
+		height: 20px;
+		// padding-left: .2rem;
+		margin-top: 0.5rem;
+	}
+}
+
+.PokeList:hover {
+	z-index: 1;
+	transform: scale(1.5);
+	img {
+		cursor: pointer;
+	}
+	// border: none;
+}
+
+.pokePaginate {
+	display: flex;
+	padding-left: 15rem;
+	padding-top: 1rem;
+
+	//blur
+	.paginationBttns {
+		width: 80%;
+		height: 40px;
+		list-style: none;
+		display: flex;
+		justify-content: center;
+	}
+
+	.paginationBttns a {
+		text-decoration: none;
+		padding: 10px;
+		margin: 8px;
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(5px);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		color: #2b2eff;
+		cursor: pointer;
+		transition: 0.5s ease-in-out;
+	}
+
+	.paginationBttns a:hover {
+		color: white;
+		background-color: #2b2eff;
+	}
+
+	.paginationActive a {
+		color: white;
+		background-color: #2b2eff;
+	}
+
+	.paginationDisabled a {
+		color: grey;
+		// background-color: grey;
+	}
+	.paginationDisabled a:hover {
+		color: grey;
+		background-color: white;
+	}
+}
+
+.PokeSearch {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+	input {
+		width: 350px;
+		height: 40px;
+		border-radius: 16px;
+		position: relative;
+		background: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(5px);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		border: none;
+		padding-left: 15px;
+	}
+}

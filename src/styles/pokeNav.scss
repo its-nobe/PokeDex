@@ -1,0 +1,72 @@
+.pokeNavi {
+	display: flex;
+	justify-content: center;
+}
+.pokeHeader {
+	cursor: crosshair;
+	
+}
+
+.pokeNav {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	height: 70px;
+	input {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+		margin-left: 15px;
+		margin-top: 10px;
+		opacity: 0;
+	}
+	img {
+		margin-left: -42.5px;
+		margin-top: -3px;
+		width: 55px;
+		height: 55px;
+		pointer-events: none;
+		transition: 0.5s ease-in-out;
+	}
+	.subPokeNav {
+		display: flex;
+		justify-content: space-evenly;
+		width: 0px;
+		align-items: center;
+		padding-top: 0.2rem;
+		overflow: hidden;
+		transition: 0.5s ease-in-out;
+
+		p {
+			text-transform: uppercase;
+			transition: all 1s ease-in-out;
+			position: relative;
+			color: lightgray;
+
+			&::before {
+				content: attr(data-item);
+				transition: all 0.5s ease-in-out;
+				background: linear-gradient(to right, black 0%, red 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				position: absolute;
+				// top: 0;
+				// bottom: 0;
+				// left: 0;
+				// right: 0;
+				width: 0;
+				overflow: hidden;
+			}
+
+			&:hover {
+				&::before {
+					width: 100%;
+				}
+			}
+		}
+		p:hover {
+			cursor: pointer;
+		}
+	}
+}

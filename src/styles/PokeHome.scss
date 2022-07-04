@@ -1,0 +1,134 @@
+.mainDiv {
+	padding: 1.5rem;
+	background-image: url("../img/118Z_2012.w017.n001.334B.p15.334.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+}
+
+.randomPoke {
+	.pokeHomeHeader {
+		display: flex;
+		justify-content: center;
+		height: 200px;
+		padding-top: 2rem;
+		margin-top: 1rem;
+		.startPoke {
+			overflow: hidden;
+			display: inline-block;
+
+			.pokeMid1,
+			.pokeMid2 {
+				display: inline-block;
+				overflow: hidden;
+				height: 2em;
+			}
+			.pokeMid1 {
+				font-size: 50px;
+				// color: var(--foreground-color);
+				transition: ease-in-out;
+				animation: ani1 10s infinite linear;
+				animation-delay: -3s;
+				max-width: 0;
+				height: 60px;
+				border-radius: 16px;
+				// color: #3c5aa6;
+				background: linear-gradient(whitesmoke 10%, red 90%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+
+				img {
+					margin-right: 1px;
+					width: 40px;
+					height: 40px;
+					margin-bottom: 7px;
+				}
+			}
+			.pokeMid2 {
+				animation: ani2 10s infinite;
+				animation-delay: -3s;
+				border-radius: 80%;
+
+				img {
+					width: 70px;
+					height: 70px;
+					margin-bottom: 0px;
+					animation: rotImg 1.7s infinite linear;
+				}
+			}
+		}
+	}
+}
+
+@keyframes rotImg {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+@keyframes ani1 {
+	0% {
+		max-width: 2000px;
+	}
+
+	25% {
+		max-width: 0;
+	}
+
+	75% {
+		max-width: 0;
+	}
+
+	90% {
+		max-width: 2000px;
+	}
+
+	100% {
+		max-width: 2000px;
+	}
+}
+
+@keyframes ani2 {
+	0% {
+		max-width: 0;
+	}
+
+	25% {
+		max-width: 0;
+	}
+
+	50% {
+		max-width: 100px;
+	}
+
+	75% {
+		max-width: 0;
+	}
+
+	100% {
+		max-width: 0;
+	}
+}
+
+.pokeAttribute {
+	margin-top: 10rem;
+	a {
+		text-decoration: none;
+		transition: .5s ease-in-out;
+		color: aliceblue;
+	}
+	p {
+		margin-top: -1.5rem;
+		color: aliceblue;
+		margin-left: 80rem;
+		a:hover{	
+			text-decoration: underline;
+			color: aqua;
+
+		}
+	}
+}

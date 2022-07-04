@@ -1,0 +1,181 @@
+.allPokeLoader {
+	padding-top: 22rem;
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+	width: 100%;
+	background-image: url("../img/118Z_2012.w017.n001.334B.p15.334.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.pokeDetail {
+	padding: 1.5rem;
+	height: 100vh;
+	width: 100%;
+	background-image: url("../img/118Z_2012.w017.n001.334B.p15.334.jpg");
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.leftDetail {
+	width: 400px;
+	display: grid;
+	// display: flex;
+	// justify-content: center;
+
+	img {
+		margin-top: 5rem;
+		width: 100px;
+		height: 100px;
+		transform: scale(3);
+		margin-left: 9.4rem;
+		border-radius: 16px;
+		backdrop-filter: blur(5px);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		cursor: crosshair;
+	}
+	div {
+		display: flex;
+		justify-content: center;
+		div {
+			// text-shadow: 1px 1px 5px blac, 1px 0 5px white;
+			margin-top: 3rem;
+			// margin-left: 4rem;
+			font-size: 30px;
+			// padding-right: 10rem;
+		}
+	}
+
+	.backBtn {
+		overflow: hidden;
+		padding-top: 3rem;
+		padding-right: 15rem;
+		.pokebtnN {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-tap-highlight-color: transparent;
+		}
+		button {
+			width: 150px;
+			height: 50px;
+			cursor: pointer;
+			border: none;
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 20px;
+			border-radius: 16px;
+			box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.5),
+				0px 0px 10px rgba(0, 0, 0, 0.15);
+			background: rgb(2, 0, 36);
+			background: linear-gradient(
+				45deg,
+				rgba(2, 0, 36, 0) 5%,
+				rgba(255, 255, 255, 0.5) 6%,
+				rgba(255, 255, 255, 0) 9%,
+				rgba(255, 255, 255, 0.5) 10%,
+				rgba(255, 255, 255, 0) 17%,
+				rgba(255, 255, 255, 0.5) 19%,
+				rgba(255, 255, 255, 0) 21%
+			);
+			background-size: 150%;
+			background-position: right;
+			transition: 1s;
+		}
+		button:hover {
+			background-position: left;
+			color: white;
+			box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 1),
+				0px 0px 10px rgba(0, 0, 0, 0.25);
+		}
+
+		button:focus {
+			outline: none;
+		}
+	}
+}
+
+.rightDetail {
+	width: 800px;
+	.PokeDetailsStat {
+		// border: 1px solid black;
+		margin-top: 1.5rem;
+	}
+
+	.PokeDetailsStat,
+	.PokeDetailsEvol {
+		background: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(5px);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		border-radius: 16px;
+	}
+	.PokeDetailsEvol {
+		height: 250px;
+	}
+	.statHead,
+	.evolHead {
+		padding-left: 2rem;
+		padding-top: 2rem;
+	}
+	.statDetail {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		padding-left: 2rem;
+
+		width: 700px;
+		p {
+			padding-left: 15px;
+			color: white;
+			transition: 0.2s ease-in-out;
+			// background: linear-gradient( red 0%, white 100%);
+			// -webkit-background-clip: text;
+			// -webkit-text-fill-color: transparent;
+		}
+		p:hover {
+			cursor: crosshair;
+			color: #3c5aa6;
+		}
+
+		// margin-top: 2rem;
+	}
+	.evolHead {
+		margin-top: 3rem;
+	}
+
+	.evolStat {
+		.evolSub {
+			display: flex;
+			justify-content: space-evenly;
+			// align-items: center;
+			flex-wrap: wrap;
+			.pokeEvol {
+				padding: 1rem;
+				p {
+					color: white;
+					transition: 0.2s ease-in-out;
+				}
+				p:hover {
+					cursor: crosshair;
+					color: #3c5aa6;
+				}
+
+				img {
+					margin-top: 1rem;
+					margin-left: 1rem;
+					width: 75px;
+					height: 75px;
+					transition: transform 0.5s ease-in-out;
+				}
+				img:hover {
+					transform: scale(1.7);
+					cursor: crosshair;
+				}
+			}
+		}
+	}
+}
