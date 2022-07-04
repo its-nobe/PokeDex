@@ -1,3 +1,10 @@
+.noback {
+	background-image: url("../img/1920x1080.png");
+	background-position: center;
+	background-size: cover;
+	// opacity: 0;
+}
+
 .mainLoader {
 	background: black;
 	display: flex;
@@ -10,10 +17,9 @@
 	padding-right: 35rem;
 	padding-top: 20rem;
 	padding-bottom: 10rem;
-    p {
-        color: white;
-        font-size: 50px;
-        transition: 0.5s ease-in-out;
-    }
+	p {
+		color: white;
+		font-size: 50px;
+		transition: 0.5s ease-in-out;
+	}
 }
-
